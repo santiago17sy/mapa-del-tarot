@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthenticatedFavoritosRouteImport } from './routes/_authenticated/favoritos'
 import { Route as AuthenticatedInicioRouteImport } from './routes/_authenticated/inicio'
 import { Route as AuthenticatedPracticarRouteImport } from './routes/_authenticated/practicar'
 import { Route as AuthenticatedTiradaRouteImport } from './routes/_authenticated/tirada'
@@ -25,6 +26,11 @@ const IndexRoute = IndexRouteImport.update({
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedFavoritosRoute = AuthenticatedFavoritosRouteImport.update({
+  id: '/favoritos',
+  path: '/favoritos',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedInicioRoute = AuthenticatedInicioRouteImport.update({
   id: '/inicio',
@@ -55,6 +61,7 @@ const AuthenticatedCartasSlugRoute = AuthenticatedCartasSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/favoritos': typeof AuthenticatedFavoritosRoute
   '/inicio': typeof AuthenticatedInicioRoute
   '/practicar': typeof AuthenticatedPracticarRoute
   '/tirada': typeof AuthenticatedTiradaRoute
@@ -63,6 +70,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/favoritos': typeof AuthenticatedFavoritosRoute
   '/inicio': typeof AuthenticatedInicioRoute
   '/practicar': typeof AuthenticatedPracticarRoute
   '/tirada': typeof AuthenticatedTiradaRoute
@@ -73,6 +81,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/_authenticated/favoritos': typeof AuthenticatedFavoritosRoute
   '/_authenticated/inicio': typeof AuthenticatedInicioRoute
   '/_authenticated/practicar': typeof AuthenticatedPracticarRoute
   '/_authenticated/tirada': typeof AuthenticatedTiradaRoute
@@ -82,13 +91,27 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/inicio' | '/practicar' | '/tirada' | '/cartas/$slug' | '/cartas/'
+    | '/'
+    | '/favoritos'
+    | '/inicio'
+    | '/practicar'
+    | '/tirada'
+    | '/cartas/$slug'
+    | '/cartas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/inicio' | '/practicar' | '/tirada' | '/cartas/$slug' | '/cartas'
+  to:
+    | '/'
+    | '/favoritos'
+    | '/inicio'
+    | '/practicar'
+    | '/tirada'
+    | '/cartas/$slug'
+    | '/cartas'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/_authenticated/favoritos'
     | '/_authenticated/inicio'
     | '/_authenticated/practicar'
     | '/_authenticated/tirada'
@@ -116,6 +139,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/favoritos': {
+      id: '/_authenticated/favoritos'
+      path: '/favoritos'
+      fullPath: '/favoritos'
+      preLoaderRoute: typeof AuthenticatedFavoritosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/inicio': {
       id: '/_authenticated/inicio'
@@ -156,6 +186,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedFavoritosRoute: typeof AuthenticatedFavoritosRoute
   AuthenticatedInicioRoute: typeof AuthenticatedInicioRoute
   AuthenticatedPracticarRoute: typeof AuthenticatedPracticarRoute
   AuthenticatedTiradaRoute: typeof AuthenticatedTiradaRoute
@@ -164,6 +195,7 @@ interface AuthenticatedRouteRouteChildren {
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedFavoritosRoute: AuthenticatedFavoritosRoute,
   AuthenticatedInicioRoute: AuthenticatedInicioRoute,
   AuthenticatedPracticarRoute: AuthenticatedPracticarRoute,
   AuthenticatedTiradaRoute: AuthenticatedTiradaRoute,
