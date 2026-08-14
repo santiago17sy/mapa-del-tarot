@@ -2345,7 +2345,11 @@ export const TAROT_CARDS: TarotCard[] = [
       },
       {
         "label": "Personalidad",
-        "value": "Optimista, inquieto y creativo. Hora:Noticias inmediatas/de última hora."
+        "value": "Optimista, inquieto y creativo."
+      },
+      {
+        "label": "Hora",
+        "value": "Noticias inmediatas/de última hora."
       },
       {
         "label": "Sí/No",
@@ -2375,11 +2379,11 @@ export const TAROT_CARDS: TarotCard[] = [
     "reversed_meaning": "Impulsividad sin madurez, entusiasmo mal dirigido o proyectos abandonados. Indica falta de seguimiento, ideas sin sustento o energía creativa desperdiciada.",
     "combinations": [
       {
-        "card": "Pagem de Bastos + El Loco",
+        "card": "Paje de Bastos + El Loco",
         "meaning": "El comienzo de un viaje completamente nuevo y sin miedo; entrega total a lo desconocido."
       },
       {
-        "card": "Pagem de Bastos + El Diablo",
+        "card": "Paje de Bastos + El Diablo",
         "meaning": "Una idea emocionante que puede llevar a un comportamiento impulsivo o vicioso si no se tiene precaución."
       }
     ],
@@ -2414,7 +2418,11 @@ export const TAROT_CARDS: TarotCard[] = [
       },
       {
         "label": "Personalidad",
-        "value": "Audaz, aventurero e impaciente. Tiempo:Muy rápido/Inesperado."
+        "value": "Audaz, aventurero e impaciente."
+      },
+      {
+        "label": "Tiempo",
+        "value": "Muy rápido/Inesperado."
       },
       {
         "label": "Sí/No",
@@ -2556,7 +2564,11 @@ export const TAROT_CARDS: TarotCard[] = [
       },
       {
         "label": "Personalidad",
-        "value": "Visionario, carismático y decidido. Tiempo:Ritmo rápido/Fase de grandes logros."
+        "value": "Visionario, carismático y decidido."
+      },
+      {
+        "label": "Tiempo",
+        "value": "Ritmo rápido/Fase de grandes logros."
       },
       {
         "label": "Sí/No",
@@ -3382,14 +3394,14 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Sensibilidad, noticias de amor, creatividad y pura empatía.",
     "shadow": "Inmadurez emocional, escapismo, seducción barata o alguien que se lastima fácilmente por cualquier motivo.",
-    "reversed_meaning": "Ingenuidad emocional, mensajes mal interpretados o sensibilidad excesiva. Indica inmadurez sentimental, creatividad bloqueada o escapismo emocional. 101",
+    "reversed_meaning": "Ingenuidad emocional, mensajes mal interpretados o sensibilidad excesiva. Indica inmadurez sentimental, creatividad bloqueada o escapismo emocional.",
     "combinations": [
       {
-        "card": "Pagem de Copas + El Hierofante",
+        "card": "Paje de Copas + El Hierofante",
         "meaning": "Noticias de un bautismo, boda o el inicio de un estudio espiritual serio."
       },
       {
-        "card": "Pagem de Copas + La Luna",
+        "card": "Paje de Copas + La Luna",
         "meaning": "Peligro de perderse en fantasías o confusión mental; sueños que pueden ser meras ilusiones del ego."
       }
     ],
@@ -3473,7 +3485,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Compasión, clarividencia, apoyo emocional y amor incondicional.",
     "shadow": "Dependencia emocional, drama excesivo, melancolía o alguien que se pierde en sus emociones y se vuelve manipulador o inestable.",
-    "reversed_meaning": "Codependencia, manipulación emocional o ahogarse en los propios sentimientos. Indica pérdida de límites, intuición distorsionada por el deseo o emociones desbordadas. 103",
+    "reversed_meaning": "Codependencia, manipulación emocional o ahogarse en los propios sentimientos. Indica pérdida de límites, intuición distorsionada por el deseo o emociones desbordadas.",
     "combinations": [
       {
         "card": "Reina de Copas + La Suma Sacerdotisa",
@@ -3546,7 +3558,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Autocontrol, apoyo emocional, justicia y sanación espiritual.",
     "shadow": "Manipulación emocional, frialdad disfrazada, deshonestidad o alguien que utiliza los sentimientos de los demás para mantener el poder.",
-    "reversed_meaning": "Represión emocional, manipulación encubierta o inestabilidad bajo una apariencia serena. Señala comportamiento pasivo-agresivo, adicciones emocionales o juicios sesgados. 105",
+    "reversed_meaning": "Represión emocional, manipulación encubierta o inestabilidad bajo una apariencia serena. Señala comportamiento pasivo-agresivo, adicciones emocionales o juicios sesgados.",
     "combinations": [
       {
         "card": "Rey de Copas + Justicia",
@@ -3619,7 +3631,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Verdad, concentración, valentía intelectual y resolución de problemas.",
     "shadow": "Crueldad verbal, confusión mental, crítica excesiva o usar la inteligencia para herir en lugar de liberar.",
-    "reversed_meaning": "Confusión mental, verdad distorsionada o comunicación fallida. Indica abuso del intelecto, pensamiento destructivo o dificultad para tomar decisiones claras. 107",
+    "reversed_meaning": "Confusión mental, verdad distorsionada o comunicación fallida. Indica abuso del intelecto, pensamiento destructivo o dificultad para tomar decisiones claras.",
     "combinations": [
       {
         "card": "As de Espadas + El Juicio",
@@ -3692,7 +3704,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Verdad, concentración, valentía intelectual y resolución de problemas.",
     "shadow": "Crueldad verbal, confusión mental, crítica excesiva o usar la inteligencia para herir en lugar de liberar.",
-    "reversed_meaning": "Información oculta que sale a la luz, parálisis o decisión forzada. Señala sobrecarga mental, evasión de conflictos o incapacidad para ver con claridad. 109",
+    "reversed_meaning": "Información oculta que sale a la luz, parálisis o decisión forzada. Señala sobrecarga mental, evasión de conflictos o incapacidad para ver con claridad.",
     "combinations": [
       {
         "card": "Dos de Espadas + Los Enamorados",
@@ -3734,7 +3746,11 @@ export const TAROT_CARDS: TarotCard[] = [
       },
       {
         "label": "Signo del zodiaco",
-        "value": "Saturno en Libra (karma en las relaciones). Tiempo:Rápido/Situación de crisis."
+        "value": "Saturno en Libra (karma en las relaciones)."
+      },
+      {
+        "label": "Tiempo",
+        "value": "Rápido/Situación de crisis."
       },
       {
         "label": "Sí/No",
@@ -3761,7 +3777,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Liberación de una mentira, fin de un ciclo tóxico y honestidad.",
     "shadow": "Resentimiento persistente, autosabotaje, palabras crueles que hieren o alguien que se niega a sanar la herida, viviendo en el trauma.",
-    "reversed_meaning": "Inicio de la sanación tras el dolor, liberación del sufrimiento o heridas que se reabren. Puede indicar tristeza no elaborada o incapacidad de dejar ir el dolor. 111",
+    "reversed_meaning": "Inicio de la sanación tras el dolor, liberación del sufrimiento o heridas que se reabren. Puede indicar tristeza no elaborada o incapacidad de dejar ir el dolor.",
     "combinations": [
       {
         "card": "Tres de Espadas + La Estrella",
@@ -3830,7 +3846,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Meditación, curación, planificación silenciosa y renovación mental.",
     "shadow": "Estancamiento, aislamiento forzado, agotamiento o alguien que usa el descanso como excusa para procrastinar y escapar de la vida.",
-    "reversed_meaning": "Regreso prematuro a la acción, agotamiento mental o incapacidad de descansar. Señala burnout, negativa al reposo necesario o ansiedad que no permite recuperarse. 113",
+    "reversed_meaning": "Regreso prematuro a la acción, agotamiento mental o incapacidad de descansar. Señala burnout, negativa al reposo necesario o ansiedad que no permite recuperarse.",
     "combinations": [
       {
         "card": "Cuatro de Espadas + Muerte",
@@ -3903,7 +3919,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Reconocer límites, distanciarse de entornos tóxicos y ejercitar la prudencia.",
     "shadow": "Arrogancia, malicia, bravuconería, o alguien que prefiere tener razón a tener paz, destruyendo puentes por puro orgullo.",
-    "reversed_meaning": "Consecuencias del conflicto pasado, reconciliación difícil o rencor persistente. Indica sabotaje propio, deshonra, o una victoria que resultó ser una derrota moral. 115",
+    "reversed_meaning": "Consecuencias del conflicto pasado, reconciliación difícil o rencor persistente. Indica sabotaje propio, deshonra, o una victoria que resultó ser una derrota moral.",
     "combinations": [
       {
         "card": "Cinco de Espadas + El Hierofante",
@@ -3972,7 +3988,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Recuperación, viajes, resolución de problemas y evolución mental.",
     "shadow": "Dificultad para dejar ir, evadir responsabilidades, miedo al cambio o sentirse estancado en medio del camino.",
-    "reversed_meaning": "Resistencia a alejarse, regreso a situaciones difíciles o transición interrumpida. Señala incapacidad de avanzar, equipaje emocional que frena el viaje o turbulentas aguas sin salida. 117",
+    "reversed_meaning": "Resistencia a alejarse, regreso a situaciones difíciles o transición interrumpida. Señala incapacidad de avanzar, equipaje emocional que frena el viaje o turbulentas aguas sin salida.",
     "combinations": [
       {
         "card": "Seis de Espadas + El Mundo",
@@ -4045,7 +4061,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Prudencia, táctica, búsqueda de soluciones creativas y autosuficiencia.",
     "shadow": "Manipulación, robo, mentiras, cinismo o alguien que evita afrontar los problemas directamente y prefiere huir.",
-    "reversed_meaning": "Engaños descubiertos, remordimiento o estrategias que fracasan. Indica confesión tardía, actos deshonestos que salen a la luz o conciencia culpable. 119",
+    "reversed_meaning": "Engaños descubiertos, remordimiento o estrategias que fracasan. Indica confesión tardía, actos deshonestos que salen a la luz o conciencia culpable.",
     "combinations": [
       {
         "card": "Siete de Espadas + El Mago",
@@ -4118,7 +4134,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Un momento de introspección forzada para comprender los propios miedos.",
     "shadow": "Victimismo, ansiedad paralizante, claustrofobia emocional o alguien que espera un salvador sin darse cuenta de que tiene la clave.",
-    "reversed_meaning": "Inicio de la liberación, cuestionamiento de creencias limitantes o salida de la trampa mental. También puede señalar mayor parálisis o victimismo cronificado. 121",
+    "reversed_meaning": "Inicio de la liberación, cuestionamiento de creencias limitantes o salida de la trampa mental. También puede señalar mayor parálisis o victimismo cronificado.",
     "combinations": [
       {
         "card": "Ocho de Espadas + Los Enamorados",
@@ -4191,7 +4207,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Enfrentar tus miedos, admitir la necesidad de ayuda y desahogarte.",
     "shadow": "Pánico, paranoia, autolesión mental o alguien que se deja consumir por problemas que aún no han sucedido.",
-    "reversed_meaning": "Ansiedad extrema, pesadillas o crisis mental en su punto álgido. También puede indicar inicio de la recuperación o reconocer que el miedo es mayor que la realidad. 123",
+    "reversed_meaning": "Ansiedad extrema, pesadillas o crisis mental en su punto álgido. También puede indicar inicio de la recuperación o reconocer que el miedo es mayor que la realidad.",
     "combinations": [
       {
         "card": "Nueve de Espadas + El Sol",
@@ -4264,7 +4280,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Liberación de una carga, fin del sufrimiento y comienzo del renacimiento.",
     "shadow": "Victimismo excesivo, drama, traición a espaldas de alguien o alguien que se niega a aceptar que la situación ha llegado a su fin.",
-    "reversed_meaning": "Recuperación tras un colapso, resistencia a aceptar el final o victimismo prolongado. Señala un punto de inflexión doloroso o negativa a soltar lo que ya terminó. 125",
+    "reversed_meaning": "Recuperación tras un colapso, resistencia a aceptar el final o victimismo prolongado. Señala un punto de inflexión doloroso o negativa a soltar lo que ya terminó.",
     "combinations": [
       {
         "card": "Diez de Espadas + Muerte",
@@ -4306,7 +4322,11 @@ export const TAROT_CARDS: TarotCard[] = [
       },
       {
         "label": "Personalidad",
-        "value": "Analítico, curioso, directo y a veces irónico. Hora:Noticias inmediatas/rápidas."
+        "value": "Analítico, curioso, directo y a veces irónico."
+      },
+      {
+        "label": "Hora",
+        "value": "Noticias inmediatas/rápidas."
       },
       {
         "label": "Sí/No",
@@ -4333,14 +4353,14 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Perspicacia, agilidad mental, honestidad y búsqueda de la verdad.",
     "shadow": "Espionaje, chisme, sarcasmo destructivo o alguien que usa la inteligencia para criticar sin proponer soluciones reales.",
-    "reversed_meaning": "Chismes, mentiras o curiosidad mal utilizada. Indica comportamiento impulsivo, comunicación agresiva o pensamiento superficial sin madurez. 127",
+    "reversed_meaning": "Chismes, mentiras o curiosidad mal utilizada. Indica comportamiento impulsivo, comunicación agresiva o pensamiento superficial sin madurez.",
     "combinations": [
       {
-        "card": "Pagem de Espadas + El Mago",
+        "card": "Paje de Espadas + El Mago",
         "meaning": "Una mente brillante, lista para ejecutar planes; excelente para nuevos proyectos que requieren técnica y concentración."
       },
       {
-        "card": "Pagem de Espadas + El Diablo",
+        "card": "Paje de Espadas + El Diablo",
         "meaning": "Cuidado con usar la inteligencia para manipular o con los chismes que buscan dañar la reputación de alguien."
       }
     ],
@@ -4406,7 +4426,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Coraje, intelecto agudo, claridad de propósito y acción decisiva.",
     "shadow": "Impulsividad, agresividad verbal, falta de tacto o alguien que pisotea a los demás para demostrar que tiene razón.",
-    "reversed_meaning": "Imprudencia, agresividad verbal o conflictos por actuar sin pensar. Señala arrogancia intelectual, decisiones apresuradas o energía mental destructiva. 129",
+    "reversed_meaning": "Imprudencia, agresividad verbal o conflictos por actuar sin pensar. Señala arrogancia intelectual, decisiones apresuradas o energía mental destructiva.",
     "combinations": [
       {
         "card": "Caballero de Espadas + El Carro",
@@ -4479,7 +4499,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Discernimiento, honestidad, autonomía y protección de la propia verdad.",
     "shadow": "Frialdad excesiva, amargura, sarcasmo o alguien que usa el dolor del pasado como escudo para evitar conectar con alguien.",
-    "reversed_meaning": "Frialdad extrema, amargura o uso del intelecto para herir. Indica crueldad disfrazada de honestidad, juicios duros sin compasión o aislamiento emocional. 131",
+    "reversed_meaning": "Frialdad extrema, amargura o uso del intelecto para herir. Indica crueldad disfrazada de honestidad, juicios duros sin compasión o aislamiento emocional.",
     "combinations": [
       {
         "card": "Reina de Espadas + Justicia",
@@ -4552,7 +4572,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Justicia, imparcialidad, sabiduría y protección a través de la ley.",
     "shadow": "Tiranía, frialdad inhumana, manipulación intelectual, o alguien que usa el poder para oprimir y controlar de forma cruel.",
-    "reversed_meaning": "Tiranía intelectual, manipulación o abuso de autoridad. Señala uso de la lógica para dominar, decisiones injustas o desconexión total de las emociones. 133",
+    "reversed_meaning": "Tiranía intelectual, manipulación o abuso de autoridad. Señala uso de la lógica para dominar, decisiones injustas o desconexión total de las emociones.",
     "combinations": [
       {
         "card": "Rey de Espadas + El Emperador",
@@ -4625,7 +4645,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Prosperidad, salud, herencia, ascensos y éxito tangible.",
     "shadow": "Avaricia, enfoque excesivo en el dinero, oportunidades perdidas debido al miedo o la demora en invertir en aquello que brinda retornos reales.",
-    "reversed_meaning": "Oportunidad material perdida, inversión fallida o inicio bloqueado. Indica mala gestión de recursos, prosperidad postergada o apego excesivo a la seguridad económica. 135",
+    "reversed_meaning": "Oportunidad material perdida, inversión fallida o inicio bloqueado. Indica mala gestión de recursos, prosperidad postergada o apego excesivo a la seguridad económica.",
     "combinations": [
       {
         "card": "As de Oros + La Emperatriz",
@@ -4663,7 +4683,11 @@ export const TAROT_CARDS: TarotCard[] = [
       },
       {
         "label": "Signo",
-        "value": "Júpiter en Capricornio (expansión con precaución). Tiempo:Cambio constante/Corto plazo."
+        "value": "Júpiter en Capricornio (expansión con precaución)."
+      },
+      {
+        "label": "Tiempo",
+        "value": "Cambio constante/Corto plazo."
       },
       {
         "label": "Sí/No",
@@ -4690,7 +4714,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Adaptabilidad, eficiencia, disfrute en el trabajo y gestión de crisis.",
     "shadow": "Desorganización, deudas, una carga de trabajo excesiva o la sensación de “llevar el mundo sobre los hombros” sin foco.",
-    "reversed_meaning": "Desequilibrio financiero, malabarismo insostenible o deudas que se acumulan. Señala incapacidad de adaptarse a los cambios o descuido en la administración de recursos. 137",
+    "reversed_meaning": "Desequilibrio financiero, malabarismo insostenible o deudas que se acumulan. Señala incapacidad de adaptarse a los cambios o descuido en la administración de recursos.",
     "combinations": [
       {
         "card": "Dos de Oros + La Rueda de la Fortuna",
@@ -4759,7 +4783,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Reconocimiento, cooperación, aprendizaje y calidad superior.",
     "shadow": "Mala mano de obra, falta de trabajo en equipo, mediocridad o alguien que se niega a aprender de aquellos con más experiencia.",
-    "reversed_meaning": "Trabajo mal reconocido, falta de colaboración o habilidades desperdiciadas. Indica conflictos en equipo, proyectos sin planificación o esfuerzo sin recompensa justa. 139",
+    "reversed_meaning": "Trabajo mal reconocido, falta de colaboración o habilidades desperdiciadas. Indica conflictos en equipo, proyectos sin planificación o esfuerzo sin recompensa justa.",
     "combinations": [
       {
         "card": "Tres de Oros + El Hierofante",
@@ -4832,7 +4856,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Gestión prudente, estabilidad, límites claros y seguridad financiera.",
     "shadow": "Avaricia, miedo a la escasez, posesividad en las relaciones o alguien que se cierra a cosas nuevas por miedo a perder lo que tiene.",
-    "reversed_meaning": "Avaricia, miedo a perder o control excesivo sobre los recursos. También puede indicar generosidad repentina o liberación de apegos materiales que limitaban el crecimiento. 141",
+    "reversed_meaning": "Avaricia, miedo a perder o control excesivo sobre los recursos. También puede indicar generosidad repentina o liberación de apegos materiales que limitaban el crecimiento.",
     "combinations": [
       {
         "card": "Cuatro de Oros + La Torre",
@@ -4905,7 +4929,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Resiliencia, humildad para pedir ayuda y unidad en la adversidad.",
     "shadow": "Una mentalidad de escasez, victimización, abandono o centrarse tanto en la pérdida que uno no logra ver las soluciones que están justo al lado.",
-    "reversed_meaning": "Inicio de la recuperación económica, ayuda que llega o fin de una etapa de escasez. También puede señalar orgullo que impide pedir apoyo o crisis prolongada. 143",
+    "reversed_meaning": "Inicio de la recuperación económica, ayuda que llega o fin de una etapa de escasez. También puede señalar orgullo que impide pedir apoyo o crisis prolongada.",
     "combinations": [
       {
         "card": "Cinco de Oros + El Hierofante",
@@ -4974,7 +4998,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Generosidad, bonificaciones, justicia social, apoyo mutuo y prosperidad.",
     "shadow": "Filantropía impulsada por el ego, deudas injustas, sobornos o alguien que utiliza la ayuda para crear dependencia y controlar a otros.",
-    "reversed_meaning": "Generosidad con condiciones, desequilibrio de poder o deudas no saldadas. Indica dependencia económica, caridad condescendiente o dinero que genera obligaciones. 145",
+    "reversed_meaning": "Generosidad con condiciones, desequilibrio de poder o deudas no saldadas. Indica dependencia económica, caridad condescendiente o dinero que genera obligaciones.",
     "combinations": [
       {
         "card": "Seis de Oros + El Emperador",
@@ -5047,7 +5071,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Paciencia, buena inversión, visión de futuro y una cosecha justa.",
     "shadow": "Impaciencia, frustración por el retraso, pereza o miedo a que el esfuerzo haya sido en vano, llevan al abandono del proyecto.",
-    "reversed_meaning": "Impaciencia con los resultados, esfuerzo sin recompensa o abandono prematuro. Señala falta de visión a largo plazo, rendimiento estancado o trabajo que no da frutos. 147",
+    "reversed_meaning": "Impaciencia con los resultados, esfuerzo sin recompensa o abandono prematuro. Señala falta de visión a largo plazo, rendimiento estancado o trabajo que no da frutos.",
     "combinations": [
       {
         "card": "Siete de Oros + El Mundo",
@@ -5120,7 +5144,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Ética laboral, excelencia, enfoque, disciplina y autosuficiencia.",
     "shadow": "Adicto al trabajo, perfeccionismo paralizante, falta de perspectiva global o alguien que realiza un trabajo mecánico y sin alma.",
-    "reversed_meaning": "Trabajo mecánico sin pasión, perfeccionismo paralizante o habilidades mal aplicadas. Indica falta de compromiso, aprendizaje superficial o ambición sin dedicación real. 149",
+    "reversed_meaning": "Trabajo mecánico sin pasión, perfeccionismo paralizante o habilidades mal aplicadas. Indica falta de compromiso, aprendizaje superficial o ambición sin dedicación real.",
     "combinations": [
       {
         "card": "Ocho de Oros + El Mago",
@@ -5193,7 +5217,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Independencia, elegancia, bienestar físico y confianza personal.",
     "shadow": "Aislamiento excesivo, futilidad, soledad disfrazada de estatus, o alguien que se convierte en prisionero de su propia “jaula de oro”.",
-    "reversed_meaning": "Dependencia financiera, lujos vacíos o autosuficiencia falsa. Indica pérdida de lo construido, exceso material sin satisfacción o descuido de la vida interior. 151",
+    "reversed_meaning": "Dependencia financiera, lujos vacíos o autosuficiencia falsa. Indica pérdida de lo construido, exceso material sin satisfacción o descuido de la vida interior.",
     "combinations": [
       {
         "card": "Nueve de Oros + El Sol",
@@ -5266,7 +5290,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Prosperidad familiar, herencia, estabilidad y respeto a las raíces.",
     "shadow": "Conflictos por herencias, conservadurismo excesivo o alguien que valora el estatus y el dinero más que los vínculos emocionales genuinos.",
-    "reversed_meaning": "Conflictos familiares sobre herencias, pérdida de legado o riqueza inestable. Señala fundamentos frágiles, tradiciones que oprimen o bienestar material sin unión afectiva. 153",
+    "reversed_meaning": "Conflictos familiares sobre herencias, pérdida de legado o riqueza inestable. Señala fundamentos frágiles, tradiciones que oprimen o bienestar material sin unión afectiva.",
     "combinations": [
       {
         "card": "Diez de Oros + El Hierofante",
@@ -5339,14 +5363,14 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Ambición sana, dedicación, buenas noticias financieras y buena salud.",
     "shadow": "Talento desperdiciado, pereza, enfoque excesivo en detalles inútiles o alguien que estudia mucho pero nunca pone nada en práctica.",
-    "reversed_meaning": "Pereza, falta de ambición o planes sin seguimiento. Indica procrastinación, oportunidades de aprendizaje desperdiciadas o exceso de materialismo sin propósito. 155",
+    "reversed_meaning": "Pereza, falta de ambición o planes sin seguimiento. Indica procrastinación, oportunidades de aprendizaje desperdiciadas o exceso de materialismo sin propósito.",
     "combinations": [
       {
-        "card": "Pagem de Oros + El Loco",
+        "card": "Paje de Oros + El Loco",
         "meaning": "El comienzo de un viaje financiero arriesgado pero emocionante; la necesidad de equilibrar la fe y el realismo."
       },
       {
-        "card": "Pagem de Oros + El Ermitaño",
+        "card": "Paje de Oros + El Ermitaño",
         "meaning": "Periodo de especialización profunda y aislada; estudio técnico que requiere paciencia y silencio para madurar."
       }
     ],
@@ -5412,7 +5436,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Lealtad, extrema eficiencia, realismo y atención al detalle.",
     "shadow": "Estancamiento, terquedad, aburrimiento o alguien que se obsesiona con la rutina, olvidándose de vivir o innovar.",
-    "reversed_meaning": "Estancamiento, rutina sofocante o perfeccionismo que paraliza. Señala lentitud excesiva, falta de progreso o apego a la seguridad que impide crecer. 157",
+    "reversed_meaning": "Estancamiento, rutina sofocante o perfeccionismo que paraliza. Señala lentitud excesiva, falta de progreso o apego a la seguridad que impide crecer.",
     "combinations": [
       {
         "card": "Caballero de Oros + La Rueda de la Fortuna",
@@ -5481,7 +5505,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Hospitalidad, sentido común, prosperidad y equilibrio entre trabajo y hogar.",
     "shadow": "Inseguridad material, descuido de la salud, posesividad o alguien tratando de comprar afecto a través de regalos y dinero.",
-    "reversed_meaning": "Descuido de uno mismo, exceso de practicidad o dependencia material. Indica desequilibrio entre el cuidado de los demás y el propio, o relación poco sana con el dinero. 159",
+    "reversed_meaning": "Descuido de uno mismo, exceso de practicidad o dependencia material. Indica desequilibrio entre el cuidado de los demás y el propio, o relación poco sana con el dinero.",
     "combinations": [
       {
         "card": "Reina de Oros + La Emperatriz",
@@ -5550,7 +5574,7 @@ export const TAROT_CARDS: TarotCard[] = [
     ],
     "light": "Prosperidad, confiabilidad, espíritu emprendedor y protección.",
     "shadow": "Materialismo crudo, corrupción, terquedad ciega o alguien que juzga el valor de una persona únicamente por su saldo bancario o sus posesiones.",
-    "reversed_meaning": "Codicia, obsesión con el estatus o pérdida de lo construido por malas decisiones. Señala rigidez ante el cambio, corrupción o valores completamente volcados en lo material. 161",
+    "reversed_meaning": "Codicia, obsesión con el estatus o pérdida de lo construido por malas decisiones. Señala rigidez ante el cambio, corrupción o valores completamente volcados en lo material.",
     "combinations": [
       {
         "card": "Rey de Oros + El Emperador",
