@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedInicioRouteImport } from './routes/_authenticated/inicio'
+import { Route as AuthenticatedPracticarRouteImport } from './routes/_authenticated/practicar'
 import { Route as AuthenticatedTiradaRouteImport } from './routes/_authenticated/tirada'
 import { Route as AuthenticatedCartasIndexRouteImport } from './routes/_authenticated/cartas.index'
 import { Route as AuthenticatedCartasSlugRouteImport } from './routes/_authenticated/cartas.$slug'
@@ -28,6 +29,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const AuthenticatedInicioRoute = AuthenticatedInicioRouteImport.update({
   id: '/inicio',
   path: '/inicio',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedPracticarRoute = AuthenticatedPracticarRouteImport.update({
+  id: '/practicar',
+  path: '/practicar',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedTiradaRoute = AuthenticatedTiradaRouteImport.update({
@@ -50,6 +56,7 @@ const AuthenticatedCartasSlugRoute = AuthenticatedCartasSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/inicio': typeof AuthenticatedInicioRoute
+  '/practicar': typeof AuthenticatedPracticarRoute
   '/tirada': typeof AuthenticatedTiradaRoute
   '/cartas/$slug': typeof AuthenticatedCartasSlugRoute
   '/cartas/': typeof AuthenticatedCartasIndexRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/inicio': typeof AuthenticatedInicioRoute
+  '/practicar': typeof AuthenticatedPracticarRoute
   '/tirada': typeof AuthenticatedTiradaRoute
   '/cartas/$slug': typeof AuthenticatedCartasSlugRoute
   '/cartas': typeof AuthenticatedCartasIndexRoute
@@ -66,20 +74,23 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/_authenticated/inicio': typeof AuthenticatedInicioRoute
+  '/_authenticated/practicar': typeof AuthenticatedPracticarRoute
   '/_authenticated/tirada': typeof AuthenticatedTiradaRoute
   '/_authenticated/cartas/$slug': typeof AuthenticatedCartasSlugRoute
   '/_authenticated/cartas/': typeof AuthenticatedCartasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/inicio' | '/tirada' | '/cartas/$slug' | '/cartas/'
+  fullPaths:
+    '/' | '/inicio' | '/practicar' | '/tirada' | '/cartas/$slug' | '/cartas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/inicio' | '/tirada' | '/cartas/$slug' | '/cartas'
+  to: '/' | '/inicio' | '/practicar' | '/tirada' | '/cartas/$slug' | '/cartas'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/_authenticated/inicio'
+    | '/_authenticated/practicar'
     | '/_authenticated/tirada'
     | '/_authenticated/cartas/$slug'
     | '/_authenticated/cartas/'
@@ -113,6 +124,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedInicioRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/practicar': {
+      id: '/_authenticated/practicar'
+      path: '/practicar'
+      fullPath: '/practicar'
+      preLoaderRoute: typeof AuthenticatedPracticarRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/tirada': {
       id: '/_authenticated/tirada'
       path: '/tirada'
@@ -139,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedInicioRoute: typeof AuthenticatedInicioRoute
+  AuthenticatedPracticarRoute: typeof AuthenticatedPracticarRoute
   AuthenticatedTiradaRoute: typeof AuthenticatedTiradaRoute
   AuthenticatedCartasSlugRoute: typeof AuthenticatedCartasSlugRoute
   AuthenticatedCartasIndexRoute: typeof AuthenticatedCartasIndexRoute
@@ -146,6 +165,7 @@ interface AuthenticatedRouteRouteChildren {
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedInicioRoute: AuthenticatedInicioRoute,
+  AuthenticatedPracticarRoute: AuthenticatedPracticarRoute,
   AuthenticatedTiradaRoute: AuthenticatedTiradaRoute,
   AuthenticatedCartasSlugRoute: AuthenticatedCartasSlugRoute,
   AuthenticatedCartasIndexRoute: AuthenticatedCartasIndexRoute,
