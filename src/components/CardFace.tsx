@@ -11,24 +11,15 @@ export function CardFace({
   const text = size === "lg" ? "text-2xl" : size === "sm" ? "text-xs" : "text-sm";
   const glyph = size === "lg" ? "text-6xl" : size === "sm" ? "text-2xl" : "text-4xl";
 
-  if (card.image) {
-    return (
-      <div className="aspect-[2/3] w-full overflow-hidden rounded-xl border border-gold/40">
-        <img src={card.image} alt={card.name} className="h-full w-full object-cover" loading="lazy" />
-      </div>
-    );
-  }
-
   return (
-    <div className="relative flex aspect-[2/3] w-full flex-col items-center justify-between overflow-hidden rounded-xl border border-gold/50 bg-primary p-3 text-center text-primary-foreground">
-      <span className="absolute inset-2 rounded-lg border border-gold/30" aria-hidden />
-      <span className="font-display text-[0.7rem] tracking-[0.25em] text-gold-soft/80">
-        {card.number ?? "•"}
+    <div className="flex aspect-[2/3] w-full flex-col items-center justify-between rounded-xl border border-gold/50 bg-card p-2.5 text-center shadow-sm">
+      <span className="text-[0.6rem] uppercase tracking-[0.18em] text-gold">
+        {card.number ?? card.category}
       </span>
-      <span className={`${glyph} text-gold`} aria-hidden>
+      <span className={`${glyph} leading-none text-primary/80`} aria-hidden>
         {suitGlyph(card)}
       </span>
-      <span className={`font-display ${text} leading-tight`}>{card.name}</span>
+      <span className={`${text} font-display leading-tight text-primary`}>{card.name}</span>
     </div>
   );
 }
