@@ -14,16 +14,230 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      favorites: {
+        Row: {
+          created_at: string
+          id: string
+          tarot_card_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          tarot_card_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          tarot_card_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "favorites_tarot_card_id_fkey"
+            columns: ["tarot_card_id"]
+            isOneToOne: false
+            referencedRelation: "tarot_cards"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          access_active: boolean
+          created_at: string
+          email: string
+          id: string
+          name: string
+          role: Database["public"]["Enums"]["app_role"]
+        }
+        Insert: {
+          access_active?: boolean
+          created_at?: string
+          email?: string
+          id: string
+          name?: string
+          role?: Database["public"]["Enums"]["app_role"]
+        }
+        Update: {
+          access_active?: boolean
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          role?: Database["public"]["Enums"]["app_role"]
+        }
+        Relationships: []
+      }
+      readings: {
+        Row: {
+          card_1: string | null
+          card_2: string | null
+          card_3: string | null
+          created_at: string
+          id: string
+          question: string | null
+          user_id: string
+          user_interpretation: string | null
+        }
+        Insert: {
+          card_1?: string | null
+          card_2?: string | null
+          card_3?: string | null
+          created_at?: string
+          id?: string
+          question?: string | null
+          user_id: string
+          user_interpretation?: string | null
+        }
+        Update: {
+          card_1?: string | null
+          card_2?: string | null
+          card_3?: string | null
+          created_at?: string
+          id?: string
+          question?: string | null
+          user_id?: string
+          user_interpretation?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "readings_card_1_fkey"
+            columns: ["card_1"]
+            isOneToOne: false
+            referencedRelation: "tarot_cards"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "readings_card_2_fkey"
+            columns: ["card_2"]
+            isOneToOne: false
+            referencedRelation: "tarot_cards"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "readings_card_3_fkey"
+            columns: ["card_3"]
+            isOneToOne: false
+            referencedRelation: "tarot_cards"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tarot_cards: {
+        Row: {
+          advice: string | null
+          category: string
+          combinations: Json
+          created_at: string
+          element: string | null
+          general_meaning: string | null
+          id: string
+          image: string | null
+          light: string | null
+          name: string
+          number: string | null
+          planet_or_sign: string | null
+          reversed_meaning: string | null
+          shadow: string | null
+          slug: string
+          sort_order: number
+          suit: string | null
+          symbolism: Json
+          timing: string | null
+          yes_no: string | null
+        }
+        Insert: {
+          advice?: string | null
+          category: string
+          combinations?: Json
+          created_at?: string
+          element?: string | null
+          general_meaning?: string | null
+          id?: string
+          image?: string | null
+          light?: string | null
+          name: string
+          number?: string | null
+          planet_or_sign?: string | null
+          reversed_meaning?: string | null
+          shadow?: string | null
+          slug: string
+          sort_order?: number
+          suit?: string | null
+          symbolism?: Json
+          timing?: string | null
+          yes_no?: string | null
+        }
+        Update: {
+          advice?: string | null
+          category?: string
+          combinations?: Json
+          created_at?: string
+          element?: string | null
+          general_meaning?: string | null
+          id?: string
+          image?: string | null
+          light?: string | null
+          name?: string
+          number?: string | null
+          planet_or_sign?: string | null
+          reversed_meaning?: string | null
+          shadow?: string | null
+          slug?: string
+          sort_order?: number
+          suit?: string | null
+          symbolism?: Json
+          timing?: string | null
+          yes_no?: string | null
+        }
+        Relationships: []
+      }
+      user_progress: {
+        Row: {
+          id: string
+          tarot_card_id: string
+          user_id: string
+          viewed_at: string
+        }
+        Insert: {
+          id?: string
+          tarot_card_id: string
+          user_id: string
+          viewed_at?: string
+        }
+        Update: {
+          id?: string
+          tarot_card_id?: string
+          user_id?: string
+          viewed_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_progress_tarot_card_id_fkey"
+            columns: ["tarot_card_id"]
+            isOneToOne: false
+            referencedRelation: "tarot_cards"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "user" | "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +364,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["user", "admin"],
+    },
   },
 } as const
