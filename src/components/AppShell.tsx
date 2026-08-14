@@ -1,12 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { Home, LayoutGrid, Moon, Sparkles } from "lucide-react";
 
 const NAV = [
-  { to: "/inicio", label: "Inicio", icon: "🏠" },
-  { to: "/cartas", label: "Cartas", icon: "🃏" },
-  { to: "/tirada", label: "Tirada", icon: "🔮" },
-  { to: "/practicar", label: "Practicar", icon: "✨" },
-  { to: "/perfil", label: "Perfil", icon: "👤" },
+  { to: "/", label: "Inicio", Icon: Home, exact: true },
+  { to: "/cartas", label: "Cartas", Icon: LayoutGrid, exact: false },
+  { to: "/tirada", label: "Tirada", Icon: Moon, exact: false },
+  { to: "/practicar", label: "Practicar", Icon: Sparkles, exact: false },
 ] as const;
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -14,7 +14,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen pb-24 md:pb-10">
       <header className="sticky top-0 z-20 border-b border-border/70 bg-background/85 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-5 py-3">
-          <Link to="/inicio" className="font-display text-lg text-primary">
+          <Link to="/" className="font-display text-lg text-primary">
             Mapa del Tarot <span className="text-gold">✦</span>
           </Link>
           <nav className="hidden items-center gap-1 md:flex">
@@ -22,6 +22,7 @@ export function AppShell({ children }: { children: ReactNode }) {
               <Link
                 key={item.to}
                 to={item.to}
+                activeOptions={{ exact: item.exact }}
                 activeProps={{ className: "bg-accent text-accent-foreground" }}
                 className="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-secondary"
               >
@@ -40,13 +41,12 @@ export function AppShell({ children }: { children: ReactNode }) {
             <Link
               key={item.to}
               to={item.to}
+              activeOptions={{ exact: item.exact }}
               activeProps={{ className: "text-primary" }}
               inactiveProps={{ className: "text-muted-foreground" }}
-              className="flex flex-1 flex-col items-center gap-0.5 rounded-xl py-1.5 text-[0.65rem]"
+              className="flex flex-1 flex-col items-center gap-1 rounded-xl py-2 text-[0.68rem]"
             >
-              <span className="text-lg leading-none" aria-hidden>
-                {item.icon}
-              </span>
+              <item.Icon className="size-5" aria-hidden />
               {item.label}
             </Link>
           ))}
