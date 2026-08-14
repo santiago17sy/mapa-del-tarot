@@ -2,6 +2,8 @@ import { TAROT_CARDS } from "@/data/cards";
 
 export type Symbolism = { symbol: string; meaning: string };
 export type Combination = { card: string; meaning: string };
+export type Assignment = { label: string; value: string };
+export type Impulse = { title: string; text: string };
 
 export type TarotCard = {
   slug: string;
@@ -9,19 +11,19 @@ export type TarotCard = {
   number: string | null;
   category: string;
   suit: string | null;
+  tagline: string | null;
   general_meaning: string | null;
-  element: string | null;
-  planet_or_sign: string | null;
-  timing: string | null;
-  yes_no: string | null;
+  assignments: Assignment[];
   symbolism: Symbolism[];
   light: string | null;
   shadow: string | null;
   reversed_meaning: string | null;
   combinations: Combination[];
-  advice: string | null;
+  impulse: Impulse[];
   sort_order: number;
+  content_pending?: boolean;
 };
+
 
 export const cards: TarotCard[] = [...TAROT_CARDS].sort((a, b) => a.sort_order - b.sort_order);
 
