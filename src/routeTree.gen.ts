@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedInicioRouteImport } from './routes/_authenticated/inicio'
 import { Route as AuthenticatedCartasIndexRouteImport } from './routes/_authenticated/cartas.index'
+import { Route as AuthenticatedCartasSlugRouteImport } from './routes/_authenticated/cartas.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,15 +35,22 @@ const AuthenticatedCartasIndexRoute =
     path: '/cartas/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedCartasSlugRoute = AuthenticatedCartasSlugRouteImport.update({
+  id: '/cartas/$slug',
+  path: '/cartas/$slug',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/inicio': typeof AuthenticatedInicioRoute
+  '/cartas/$slug': typeof AuthenticatedCartasSlugRoute
   '/cartas/': typeof AuthenticatedCartasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/inicio': typeof AuthenticatedInicioRoute
+  '/cartas/$slug': typeof AuthenticatedCartasSlugRoute
   '/cartas': typeof AuthenticatedCartasIndexRoute
 }
 export interface FileRoutesById {
@@ -50,18 +58,20 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/_authenticated/inicio': typeof AuthenticatedInicioRoute
+  '/_authenticated/cartas/$slug': typeof AuthenticatedCartasSlugRoute
   '/_authenticated/cartas/': typeof AuthenticatedCartasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/inicio' | '/cartas/'
+  fullPaths: '/' | '/inicio' | '/cartas/$slug' | '/cartas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/inicio' | '/cartas'
+  to: '/' | '/inicio' | '/cartas/$slug' | '/cartas'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/_authenticated/inicio'
+    | '/_authenticated/cartas/$slug'
     | '/_authenticated/cartas/'
   fileRoutesById: FileRoutesById
 }
@@ -100,16 +110,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCartasIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/cartas/$slug': {
+      id: '/_authenticated/cartas/$slug'
+      path: '/cartas/$slug'
+      fullPath: '/cartas/$slug'
+      preLoaderRoute: typeof AuthenticatedCartasSlugRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedInicioRoute: typeof AuthenticatedInicioRoute
+  AuthenticatedCartasSlugRoute: typeof AuthenticatedCartasSlugRoute
   AuthenticatedCartasIndexRoute: typeof AuthenticatedCartasIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedInicioRoute: AuthenticatedInicioRoute,
+  AuthenticatedCartasSlugRoute: AuthenticatedCartasSlugRoute,
   AuthenticatedCartasIndexRoute: AuthenticatedCartasIndexRoute,
 }
 
