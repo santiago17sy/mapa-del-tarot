@@ -21,30 +21,28 @@ function Chip({ label, value }: { label: string; value: string }) {
 }
 
 export function CardDetailSections({ card }: { card: TarotCard }) {
-  const chips = [
-    { label: "Elemento", value: card.element },
-    { label: "Planeta / signo", value: card.planet_or_sign },
-    { label: "Tiempo", value: card.timing },
-    { label: "Sí / No", value: card.yes_no },
-  ].filter((chip) => Boolean(chip.value));
-
   return (
     <div className="space-y-4">
+      {card.tagline ? (
+        <p className="font-display text-lg italic leading-snug text-primary/90">“{card.tagline}”</p>
+      ) : null}
+
       {card.general_meaning ? (
         <Section title="Significado general">
           <p className="text-sm leading-relaxed text-foreground/85">{card.general_meaning}</p>
         </Section>
       ) : null}
 
-      {chips.length > 0 ? (
-        <Section title="Elementos y asociaciones">
-          <div className="grid grid-cols-2 gap-3">
-            {chips.map((chip) => (
-              <Chip key={chip.label} label={chip.label} value={chip.value as string} />
+      {card.assignments.length > 0 ? (
+        <Section title="Elementos y asignaciones">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {card.assignments.map((item) => (
+              <Chip key={item.label} label={item.label} value={item.value} />
             ))}
           </div>
         </Section>
       ) : null}
+
 
       {card.symbolism.length > 0 ? (
         <Section title="Simbolismo">
@@ -91,11 +89,19 @@ export function CardDetailSections({ card }: { card: TarotCard }) {
         </Section>
       ) : null}
 
-      {card.advice ? (
-        <Section title="Consejo ✨">
-          <p className="text-sm italic text-foreground/85">{card.advice}</p>
+      {card.impulse.length > 0 ? (
+        <Section title="El impulso de la carta ✨">
+          <ul className="space-y-2">
+            {card.impulse.map((item) => (
+              <li key={item.title} className="text-sm">
+                <span className="font-semibold text-primary">{item.title}: </span>
+                <span className="text-muted-foreground">{item.text}</span>
+              </li>
+            ))}
+          </ul>
         </Section>
       ) : null}
+
     </div>
   );
 }
