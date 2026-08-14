@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TiradaRouteImport } from './routes/tirada'
 import { Route as CartasIndexRouteImport } from './routes/cartas.index'
 import { Route as CartasSlugRouteImport } from './routes/cartas.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TiradaRoute = TiradaRouteImport.update({
+  id: '/tirada',
+  path: '/tirada',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CartasIndexRoute = CartasIndexRouteImport.update({
@@ -31,30 +37,34 @@ const CartasSlugRoute = CartasSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/tirada': typeof TiradaRoute
   '/cartas/$slug': typeof CartasSlugRoute
   '/cartas/': typeof CartasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/tirada': typeof TiradaRoute
   '/cartas/$slug': typeof CartasSlugRoute
   '/cartas': typeof CartasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/tirada': typeof TiradaRoute
   '/cartas/$slug': typeof CartasSlugRoute
   '/cartas/': typeof CartasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cartas/$slug' | '/cartas/'
+  fullPaths: '/' | '/tirada' | '/cartas/$slug' | '/cartas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cartas/$slug' | '/cartas'
-  id: '__root__' | '/' | '/cartas/$slug' | '/cartas/'
+  to: '/' | '/tirada' | '/cartas/$slug' | '/cartas'
+  id: '__root__' | '/' | '/tirada' | '/cartas/$slug' | '/cartas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  TiradaRoute: typeof TiradaRoute
   CartasSlugRoute: typeof CartasSlugRoute
   CartasIndexRoute: typeof CartasIndexRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tirada': {
+      id: '/tirada'
+      path: '/tirada'
+      fullPath: '/tirada'
+      preLoaderRoute: typeof TiradaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cartas/': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  TiradaRoute: TiradaRoute,
   CartasSlugRoute: CartasSlugRoute,
   CartasIndexRoute: CartasIndexRoute,
 }
