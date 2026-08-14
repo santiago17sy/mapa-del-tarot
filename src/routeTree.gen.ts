@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedFavoritosRouteImport } from './routes/_authenticated/favoritos'
 import { Route as AuthenticatedInicioRouteImport } from './routes/_authenticated/inicio'
+import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
 import { Route as AuthenticatedPracticarRouteImport } from './routes/_authenticated/practicar'
 import { Route as AuthenticatedTiradaRouteImport } from './routes/_authenticated/tirada'
 import { Route as AuthenticatedCartasIndexRouteImport } from './routes/_authenticated/cartas.index'
@@ -35,6 +36,11 @@ const AuthenticatedFavoritosRoute = AuthenticatedFavoritosRouteImport.update({
 const AuthenticatedInicioRoute = AuthenticatedInicioRouteImport.update({
   id: '/inicio',
   path: '/inicio',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedPerfilRoute = AuthenticatedPerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedPracticarRoute = AuthenticatedPracticarRouteImport.update({
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/favoritos': typeof AuthenticatedFavoritosRoute
   '/inicio': typeof AuthenticatedInicioRoute
+  '/perfil': typeof AuthenticatedPerfilRoute
   '/practicar': typeof AuthenticatedPracticarRoute
   '/tirada': typeof AuthenticatedTiradaRoute
   '/cartas/$slug': typeof AuthenticatedCartasSlugRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/favoritos': typeof AuthenticatedFavoritosRoute
   '/inicio': typeof AuthenticatedInicioRoute
+  '/perfil': typeof AuthenticatedPerfilRoute
   '/practicar': typeof AuthenticatedPracticarRoute
   '/tirada': typeof AuthenticatedTiradaRoute
   '/cartas/$slug': typeof AuthenticatedCartasSlugRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/_authenticated/favoritos': typeof AuthenticatedFavoritosRoute
   '/_authenticated/inicio': typeof AuthenticatedInicioRoute
+  '/_authenticated/perfil': typeof AuthenticatedPerfilRoute
   '/_authenticated/practicar': typeof AuthenticatedPracticarRoute
   '/_authenticated/tirada': typeof AuthenticatedTiradaRoute
   '/_authenticated/cartas/$slug': typeof AuthenticatedCartasSlugRoute
@@ -94,6 +103,7 @@ export interface FileRouteTypes {
     | '/'
     | '/favoritos'
     | '/inicio'
+    | '/perfil'
     | '/practicar'
     | '/tirada'
     | '/cartas/$slug'
@@ -103,6 +113,7 @@ export interface FileRouteTypes {
     | '/'
     | '/favoritos'
     | '/inicio'
+    | '/perfil'
     | '/practicar'
     | '/tirada'
     | '/cartas/$slug'
@@ -113,6 +124,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/_authenticated/favoritos'
     | '/_authenticated/inicio'
+    | '/_authenticated/perfil'
     | '/_authenticated/practicar'
     | '/_authenticated/tirada'
     | '/_authenticated/cartas/$slug'
@@ -154,6 +166,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedInicioRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/perfil': {
+      id: '/_authenticated/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof AuthenticatedPerfilRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/practicar': {
       id: '/_authenticated/practicar'
       path: '/practicar'
@@ -188,6 +207,7 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedFavoritosRoute: typeof AuthenticatedFavoritosRoute
   AuthenticatedInicioRoute: typeof AuthenticatedInicioRoute
+  AuthenticatedPerfilRoute: typeof AuthenticatedPerfilRoute
   AuthenticatedPracticarRoute: typeof AuthenticatedPracticarRoute
   AuthenticatedTiradaRoute: typeof AuthenticatedTiradaRoute
   AuthenticatedCartasSlugRoute: typeof AuthenticatedCartasSlugRoute
@@ -197,6 +217,7 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedFavoritosRoute: AuthenticatedFavoritosRoute,
   AuthenticatedInicioRoute: AuthenticatedInicioRoute,
+  AuthenticatedPerfilRoute: AuthenticatedPerfilRoute,
   AuthenticatedPracticarRoute: AuthenticatedPracticarRoute,
   AuthenticatedTiradaRoute: AuthenticatedTiradaRoute,
   AuthenticatedCartasSlugRoute: AuthenticatedCartasSlugRoute,
