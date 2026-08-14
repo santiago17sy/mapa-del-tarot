@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CartasIndexRouteImport } from './routes/cartas.index'
+import { Route as CartasSlugRouteImport } from './routes/cartas.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,30 +23,39 @@ const CartasIndexRoute = CartasIndexRouteImport.update({
   path: '/cartas/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CartasSlugRoute = CartasSlugRouteImport.update({
+  id: '/cartas/$slug',
+  path: '/cartas/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cartas/$slug': typeof CartasSlugRoute
   '/cartas/': typeof CartasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cartas/$slug': typeof CartasSlugRoute
   '/cartas': typeof CartasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cartas/$slug': typeof CartasSlugRoute
   '/cartas/': typeof CartasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cartas/'
+  fullPaths: '/' | '/cartas/$slug' | '/cartas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cartas'
-  id: '__root__' | '/' | '/cartas/'
+  to: '/' | '/cartas/$slug' | '/cartas'
+  id: '__root__' | '/' | '/cartas/$slug' | '/cartas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CartasSlugRoute: typeof CartasSlugRoute
   CartasIndexRoute: typeof CartasIndexRoute
 }
 
@@ -65,11 +75,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CartasIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cartas/$slug': {
+      id: '/cartas/$slug'
+      path: '/cartas/$slug'
+      fullPath: '/cartas/$slug'
+      preLoaderRoute: typeof CartasSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CartasSlugRoute: CartasSlugRoute,
   CartasIndexRoute: CartasIndexRoute,
 }
 export const routeTree = rootRouteImport
