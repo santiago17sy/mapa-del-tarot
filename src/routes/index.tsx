@@ -10,10 +10,10 @@ export const Route = createFileRoute("/")({
         content:
           "Explora las cartas del Tarot, aprende a hacer tu primera tirada y practica tu interpretación desde el celular.",
       },
-      { property: "og:title", content: "Mapa del Tarot" },
+      { property: "og:title", content: "Mapa del Tarot — Aprende a leer el Tarot paso a paso" },
       {
         property: "og:description",
-        content: "Explora las cartas, haz tu primera tirada y entrena tu intuición.",
+        content: "Explora las cartas del Tarot, aprende a hacer tu primera tirada y practica tu interpretación desde el celular.",
       },
     ],
   }),

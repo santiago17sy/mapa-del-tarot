@@ -77,10 +77,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Mapa del Tarot" },
-      { name: "description", content: "Aprende a leer el Tarot desde cero, paso a paso." },
+      { title: "Mapa del Tarot — Aprende a leer el Tarot paso a paso" },
+      { name: "description", content: "Explora las cartas del Tarot, aprende a hacer tu primera tirada y practica tu interpretación desde el celular." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Mapa del Tarot — Aprende a leer el Tarot paso a paso" },
+      { name: "twitter:title", content: "Mapa del Tarot — Aprende a leer el Tarot paso a paso" },
+      { property: "og:description", content: "Explora las cartas del Tarot, aprende a hacer tu primera tirada y practica tu interpretación desde el celular." },
+      { name: "twitter:description", content: "Explora las cartas del Tarot, aprende a hacer tu primera tirada y practica tu interpretación desde el celular." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e111726ff5800833856348500af9ea58/id-preview-30f56d79--01e21f0f-5a2e-46ba-8658-d0edfc7d89e4.lovable.app-1786743246784.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e111726ff5800833856348500af9ea58/id-preview-30f56d79--01e21f0f-5a2e-46ba-8658-d0edfc7d89e4.lovable.app-1786743246784.png" },
     ],
     links: [
       {
