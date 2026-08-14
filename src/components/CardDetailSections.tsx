@@ -89,11 +89,19 @@ export function CardDetailSections({ card }: { card: TarotCard }) {
         </Section>
       ) : null}
 
-      {card.advice ? (
-        <Section title="Consejo ✨">
-          <p className="text-sm italic text-foreground/85">{card.advice}</p>
+      {card.impulse.length > 0 ? (
+        <Section title="El impulso de la carta ✨">
+          <ul className="space-y-2">
+            {card.impulse.map((item) => (
+              <li key={item.title} className="text-sm">
+                <span className="font-semibold text-primary">{item.title}: </span>
+                <span className="text-muted-foreground">{item.text}</span>
+              </li>
+            ))}
+          </ul>
         </Section>
       ) : null}
+
     </div>
   );
 }
