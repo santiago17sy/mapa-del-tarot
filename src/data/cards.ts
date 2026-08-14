@@ -524,7 +524,7 @@ export const TAROT_CARDS: TarotCard[] = [
       },
       {
         "label": "Tempo",
-        "value": "Rápido/Movimiento Sí/No: Sí."
+        "value": "Rápido/Movimiento."
       }
     ],
     "symbolism": [
