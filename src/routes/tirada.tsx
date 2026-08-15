@@ -18,6 +18,8 @@ export const Route = createFileRoute("/tirada")({
         property: "og:description",
         content: "Te acompañamos paso a paso en tu primera lectura del Tarot.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: ReadingPage,
@@ -25,21 +27,50 @@ export const Route = createFileRoute("/tirada")({
 
 const STEPS = 6;
 
+type Orientation = "" | "upright" | "reversed";
+type Triple<T> = [T, T, T];
+
+function readingResult(orientations: Triple<Orientation>) {
+  const upright = orientations.filter((o) => o === "upright").length;
+  const reversed = orientations.filter((o) => o === "reversed").length;
+  if (upright === 3) return { title: "SÍ ROTUNDO", note: "" };
+  if (upright === 2 && reversed === 1)
+    return { title: "SÍ CON RESERVAS", note: "El resultado depende de tu acción." };
+  if (reversed === 2 && upright === 1)
+    return { title: "NO POR EL MOMENTO", note: "Existen obstáculos importantes." };
+  if (reversed === 3) return { title: "NO ROTUNDO", note: "" };
+  return null;
+}
+
 function ReadingPage() {
   const [step, setStep] = useState(1);
   const [question, setQuestion] = useState("");
-  const [picked, setPicked] = useState<[string, string, string]>(["", "", ""]);
+  const [picked, setPicked] = useState<Triple<string>>(["", "", ""]);
+  const [orientations, setOrientations] = useState<Triple<Orientation>>(["", "", ""]);
   const [interpretation, setInterpretation] = useState("");
   const [openCard, setOpenCard] = useState<string | null>(null);
   const [done, setDone] = useState(false);
 
-  const chosen = picked.map((slug) => findCard(slug)).filter((card) => Boolean(card));
+  const chosen = ([0, 1, 2] as const).map((i) => ({
+    card: findCard(picked[i] ?? ""),
+    orientation: (orientations[i] ?? "") as Orientation,
+    index: i as number,
+  }));
+
+  const selected = chosen.filter((entry) => Boolean(entry.card));
+
+  const uniqueCount = new Set(picked.filter(Boolean)).size;
+  const step4Ready =
+    picked.every(Boolean) && uniqueCount === 3 && orientations.every((o) => o !== "");
+  const result = readingResult(orientations);
 
   function reset() {
     setStep(1);
     setQuestion("");
     setPicked(["", "", ""]);
+    setOrientations(["", "", ""]);
     setInterpretation("");
+    setOpenCard(null);
     setDone(false);
   }
 
@@ -63,16 +94,19 @@ function ReadingPage() {
         {step === 1 ? (
           <StepCard title="Prepara tu espacio">
             <p className="text-sm text-muted-foreground">
-              Busca un lugar tranquilo, apaga distracciones y respira profundo tres veces. Puedes
-              encender una vela o simplemente ordenar la mesa. La intención es más importante que el
-              ritual.
+              Busca un lugar tranquilo donde nadie te interrumpa, ten tu baraja física preparada y
+              concéntrate en la consulta que quieres realizar.
             </p>
-            <Primary onClick={() => setStep(2)}>Estoy lista</Primary>
+            <Primary onClick={() => setStep(2)}>Estoy listo/a</Primary>
           </StepCard>
         ) : null}
 
         {step === 2 ? (
           <StepCard title="Formula tu pregunta">
+            <p className="text-sm text-muted-foreground">
+              Una pregunta clara ayuda a que la lectura tenga una dirección. Es preferible formular
+              preguntas abiertas y reflexivas.
+            </p>
             <textarea
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
@@ -80,40 +114,54 @@ function ReadingPage() {
               rows={3}
               className="w-full rounded-xl border border-input bg-card p-3 text-sm outline-none focus:border-gold"
             />
+            <div className="space-y-2 rounded-xl bg-secondary/60 p-3 text-sm">
+              <p className="text-muted-foreground">
+                En lugar de: <span className="text-primary">“¿Me voy a casar?”</span>
+              </p>
+              <p className="text-muted-foreground">
+                Prueba con:{" "}
+                <span className="text-primary">
+                  “¿Qué energías están actuando sobre mi relación y cómo puedo fortalecer el
+                  vínculo?”
+                </span>
+              </p>
+            </div>
             <p className="text-xs text-muted-foreground">
-              Prefiere preguntas abiertas y claras: “¿Qué necesito comprender sobre…?” en lugar de
-              preguntas de sí o no.
+              Cuanto más clara sea tu intención al barajar, más fácil será interpretar la respuesta.
             </p>
             <Primary onClick={() => setStep(3)}>Continuar</Primary>
-            <Secondary onClick={() => setStep(1)}>Volver</Secondary>
+            <Secondary onClick={() => setStep(1)}>Atrás</Secondary>
           </StepCard>
         ) : null}
 
         {step === 3 ? (
-          <StepCard title="Baraja y corta tu mazo">
+          <StepCard title="Baraja tu mazo">
             <p className="text-sm text-muted-foreground">
-              Baraja con calma mientras repites tu pregunta en silencio. Cuando lo sientas, corta el
-              mazo en tres montones y vuelve a unirlos en el orden que prefieras.
+              Mantén tu pregunta en mente mientras barajas tu baraja física.
             </p>
-            <Primary onClick={() => setStep(4)}>Ya lo hice</Primary>
-            <Secondary onClick={() => setStep(2)}>Volver</Secondary>
+            <p className="text-sm text-muted-foreground">
+              Cuando sientas que es suficiente, detente y prepara el mazo para extraer tres cartas.
+            </p>
+            <Primary onClick={() => setStep(4)}>Ya he barajado</Primary>
+            <Secondary onClick={() => setStep(2)}>Atrás</Secondary>
           </StepCard>
         ) : null}
 
         {step === 4 ? (
-          <StepCard title="Elige 3 cartas">
+          <StepCard title="Elige tres cartas">
             <p className="text-sm text-muted-foreground">
-              Saca tres cartas de tu propio mazo y regístralas aquí.
+              Extrae tres cartas de tu mazo y regístralas aquí, indicando si salieron al derecho o
+              invertidas.
             </p>
             {[0, 1, 2].map((index) => (
-              <label key={index} className="block space-y-1.5">
+              <div key={index} className="space-y-2 rounded-xl border border-border p-3">
                 <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
                   Carta {index + 1}
                 </span>
                 <select
                   value={picked[index]}
                   onChange={(e) => {
-                    const next = [...picked] as [string, string, string];
+                    const next = [...picked] as Triple<string>;
                     next[index] = e.target.value;
                     setPicked(next);
                   }}
@@ -121,34 +169,82 @@ function ReadingPage() {
                 >
                   <option value="">Selecciona una carta…</option>
                   {cards.map((card) => (
-                    <option key={card.slug} value={card.slug}>
+                    <option
+                      key={card.slug}
+                      value={card.slug}
+                      disabled={picked.some((slug, i) => i !== index && slug === card.slug)}
+                    >
                       {card.number ? `${card.number} — ` : ""}
                       {card.name}
                     </option>
                   ))}
                 </select>
-              </label>
+                <div className="grid grid-cols-2 gap-2">
+                  {(["upright", "reversed"] as const).map((value) => {
+                    const active = orientations[index] === value;
+                    return (
+                      <button
+                        key={value}
+                        type="button"
+                        onClick={() => {
+                          const next = [...orientations] as Triple<Orientation>;
+                          next[index] = value;
+                          setOrientations(next);
+                        }}
+                        className={`rounded-xl border px-3 py-2 text-sm transition-colors ${
+                          active
+                            ? "border-gold bg-secondary text-primary"
+                            : "border-input text-muted-foreground"
+                        }`}
+                      >
+                        {value === "upright" ? "Al derecho" : "Invertida"}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             ))}
-            <Primary disabled={picked.some((slug) => !slug)} onClick={() => setStep(5)}>
+            <Primary disabled={!step4Ready} onClick={() => setStep(5)}>
               Continuar
             </Primary>
-            <Secondary onClick={() => setStep(3)}>Volver</Secondary>
+            <Secondary onClick={() => setStep(3)}>Atrás</Secondary>
           </StepCard>
         ) : null}
 
         {step === 5 ? (
-          <StepCard title="Observa tus cartas">
-            <div className="grid grid-cols-3 gap-3">
-              {chosen.map((card) => (
-                <CardFace key={card!.slug} card={card!} size="sm" />
+          <StepCard title="Observa las conexiones">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              {selected.map((entry) => (
+                <ChosenCard key={entry.card!.slug} entry={entry} />
               ))}
             </div>
-            <p className="text-sm text-muted-foreground">
-              Antes de leer significados, observa: símbolos, colores, personajes, hacia dónde miran
-              y qué sensaciones aparecen en tu cuerpo.
+
+            <div className="space-y-3">
+              <Concept title="Cromatismo">
+                Observa los colores de las tres cartas. ¿Son parecidos? ¿Existe armonía o contraste?
+              </Concept>
+              <Concept title="Dirección">
+                Observa hacia dónde miran los personajes. ¿Parecen mirar hacia otra carta?
+              </Concept>
+              <Concept title="Conexión">
+                No leas las cartas como elementos aislados. Observa qué relación parece existir entre
+                ellas.
+              </Concept>
+            </div>
+
+            <ul className="space-y-1.5 text-sm text-muted-foreground">
+              <li>¿Qué fue lo primero que llamó tu atención?</li>
+              <li>¿Qué carta destaca más para ti?</li>
+              <li>¿Qué sensación producen las tres cartas juntas?</li>
+              <li>¿Parecen contar una historia?</li>
+            </ul>
+
+            <p className="rounded-xl border border-gold/60 bg-secondary/60 p-3 text-sm text-primary">
+              La tirada organiza las cartas para ayudarte a crear una narrativa.
             </p>
-            <Primary onClick={() => setStep(6)}>Continuar</Primary>
-            <Secondary onClick={() => setStep(4)}>Volver</Secondary>
+
+            <Primary onClick={() => setStep(6)}>Interpretar mi tirada</Primary>
+            <Secondary onClick={() => setStep(4)}>Atrás</Secondary>
           </StepCard>
         ) : null}
 
@@ -160,26 +256,75 @@ function ReadingPage() {
               </p>
             ) : null}
 
-            <div className="space-y-3">
-              {chosen.map((card) => (
-                <div key={card!.slug} className="rounded-xl border border-border p-3">
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="font-display text-lg text-primary">{card!.name}</p>
-                    <button
-                      onClick={() => setOpenCard(openCard === card!.slug ? null : card!.slug)}
-                      className="rounded-full border border-gold px-3 py-1 text-xs text-primary"
-                    >
-                      {openCard === card!.slug ? "Ocultar" : "Ver significado"}
-                    </button>
-                  </div>
-                  {openCard === card!.slug ? (
-                    <div className="mt-3">
-                      <CardDetailSections card={card!} />
-                    </div>
-                  ) : null}
-                </div>
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              {selected.map((entry) => (
+                <ChosenCard key={entry.card!.slug} entry={entry} />
               ))}
             </div>
+
+            <div className="space-y-3">
+              {selected.map((entry) => {
+                const card = entry.card!;
+                const reversed = entry.orientation === "reversed";
+                return (
+                  <div key={card.slug} className="rounded-xl border border-border p-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div>
+                        <p className="font-display text-lg text-primary">
+                          Carta {entry.index + 1}: {card.name}
+                        </p>
+                        <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                          {reversed ? "Invertida ↕" : "Al derecho"}
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => setOpenCard(openCard === card.slug ? null : card.slug)}
+                        className="rounded-full border border-gold px-3 py-1 text-xs text-primary"
+                      >
+                        {openCard === card.slug ? "Ocultar" : "Ver significado"}
+                      </button>
+                    </div>
+                    {reversed ? (
+                      <p className="mt-2 text-xs text-muted-foreground">
+                        Al estar invertida, consulta también su interpretación invertida.
+                      </p>
+                    ) : null}
+                    {openCard === card.slug ? (
+                      <div className="mt-3">
+                        <CardDetailSections card={card} />
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+
+            {result ? (
+              <div className="rounded-2xl border border-gold bg-secondary/70 p-5 text-center">
+                <p className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+                  Resultado de la tirada
+                </p>
+                <p className="font-display text-3xl text-primary">{result.title}</p>
+                {result.note ? (
+                  <p className="mt-1 text-sm text-muted-foreground">{result.note}</p>
+                ) : null}
+              </div>
+            ) : null}
+
+            <section className="space-y-2">
+              <h3 className="font-display text-xl text-primary">Ahora interpreta el mensaje</h3>
+              <div className="gold-rule w-16" />
+              <p className="text-sm text-muted-foreground">
+                El resultado general no sustituye la interpretación individual de las cartas.
+                Observa:
+              </p>
+              <ul className="space-y-1.5 text-sm text-muted-foreground">
+                <li>· Qué significa cada carta</li>
+                <li>· Qué aporta su orientación al derecho o invertida</li>
+                <li>· Qué relación existe entre las tres</li>
+                <li>· Qué mensaje conjunto parece surgir</li>
+              </ul>
+            </section>
 
             <label className="block space-y-1.5">
               <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
@@ -203,10 +348,38 @@ function ReadingPage() {
             ) : (
               <Primary onClick={() => setDone(true)}>Finalizar tirada</Primary>
             )}
+            <Secondary onClick={() => setStep(5)}>Atrás</Secondary>
           </StepCard>
         ) : null}
       </div>
     </AppShell>
+  );
+}
+
+function ChosenCard({
+  entry,
+}: {
+  entry: { card: ReturnType<typeof findCard>; orientation: Orientation; index: number };
+}) {
+  const reversed = entry.orientation === "reversed";
+  return (
+    <div className="space-y-1.5">
+      <div className={reversed ? "rotate-180" : undefined}>
+        <CardFace card={entry.card!} size="sm" />
+      </div>
+      <p className="text-center text-[0.6rem] uppercase tracking-[0.12em] text-muted-foreground">
+        Carta {entry.index + 1} · {reversed ? "Invertida" : "Derecho"}
+      </p>
+    </div>
+  );
+}
+
+function Concept({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <div className="rounded-xl bg-secondary/50 p-3">
+      <p className="text-xs uppercase tracking-[0.15em] text-gold">{title}</p>
+      <p className="mt-1 text-sm text-muted-foreground">{children}</p>
+    </div>
   );
 }
 
