@@ -1,9 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { TarotCard } from "@/lib/tarot";
 import { suitGlyph } from "@/lib/tarot";
 
-// Cartas con imagen disponible en public/cards/{slug}.webp
-const CARDS_WITH_IMAGE = new Set(["el-loco", "el-mago", "la-suma-sacerdotisa"]);
+const imageCache = new Map<string, boolean>();
+
+function useImageExists(src: string) {
+  const [exists, setExists] = useState(() => imageCache.get(src) ?? null);
+
+  useEffect(() => {
+    if (exists !== null) return;
+    let cancelled = false;
+    fetch(src, { method: "HEAD" })
+      .then((res) => {
+        if (cancelled) return;
+        const ok = !!(res.ok && res.headers.get("content-type")?.startsWith("image/"));
+        imageCache.set(src, ok);
+        setExists(ok);
+
+      })
+      .catch(() => {
+        if (cancelled) return;
+        imageCache.set(src, false);
+        setExists(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [src, exists]);
+
+  return exists;
+}
 
 export function CardFace({
   card,
@@ -14,17 +40,16 @@ export function CardFace({
 }) {
   const text = size === "lg" ? "text-2xl" : size === "sm" ? "text-xs" : "text-sm";
   const glyph = size === "lg" ? "text-6xl" : size === "sm" ? "text-2xl" : "text-4xl";
-  const [failed, setFailed] = useState(false);
-  const hasImage = CARDS_WITH_IMAGE.has(card.slug) && !failed;
+  const imageUrl = `/cards/${card.slug}.webp`;
+  const exists = useImageExists(imageUrl);
 
-  if (hasImage) {
+  if (exists === true) {
     return (
       <div className="aspect-[2/3] w-full overflow-hidden rounded-xl border border-gold/50 bg-card shadow-sm">
         <img
-          src={`/cards/${card.slug}.webp`}
+          src={imageUrl}
           alt={card.name}
           loading="lazy"
-          onError={() => setFailed(true)}
           className="h-full w-full object-cover"
         />
       </div>
@@ -43,3 +68,5 @@ export function CardFace({
     </div>
   );
 }
+
+
