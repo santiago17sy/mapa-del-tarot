@@ -3428,16 +3428,95 @@ export const TAROT_CARDS: TarotCard[] = [
     "category": "Arcano Menor",
     "suit": "Copas",
     "tagline": null,
-    "general_meaning": "Contenido pendiente de incorporar.",
-    "assignments": [],
-    "symbolism": [],
-    "light": null,
-    "shadow": null,
-    "reversed_meaning": null,
-    "combinations": [],
-    "impulse": [],
-    "sort_order": 47,
-    "content_pending": true
+    "general_meaning": "El Caballero de Copas representa la llegada de una propuesta, invitación, mensaje o experiencia guiada por las emociones. Es una carta asociada con el romanticismo, la sensibilidad, la imaginación y la búsqueda de aquello que inspira al corazón. Puede representar a una persona encantadora, diplomática y emocionalmente receptiva, o señalar un momento en el que es necesario dejarse guiar por la intuición y los sentimientos sin perder el contacto con la realidad.",
+    "assignments": [
+      {
+        "label": "Elemento",
+        "value": "Agua."
+      },
+      {
+        "label": "Personalidad",
+        "value": "Romántica, sensible, creativa, intuitiva, diplomática, idealista y soñadora."
+      },
+      {
+        "label": "Tiempo",
+        "value": "Movimiento moderado. Puede indicar acontecimientos que se aproximan de forma gradual, especialmente relacionados con emociones, relaciones, invitaciones o propuestas."
+      },
+      {
+        "label": "Sí/No",
+        "value": "Sí, especialmente en asuntos sentimentales, creativos o emocionales."
+      }
+    ],
+    "symbolism": [
+      {
+        "symbol": "El caballero",
+        "meaning": "avanza sosteniendo una copa, símbolo de una oferta emocional, un mensaje o una oportunidad que nace del corazón."
+      },
+      {
+        "symbol": "Su movimiento",
+        "meaning": "no es agresivo ni precipitado: representa una aproximación tranquila, elegante y consciente."
+      },
+      {
+        "symbol": "El agua",
+        "meaning": "está relacionada con las emociones, la intuición y el mundo interior."
+      },
+      {
+        "symbol": "El caballo",
+        "meaning": "simboliza movimiento y progreso."
+      },
+      {
+        "symbol": "La copa",
+        "meaning": "indica que aquello que llega tiene un componente emocional o afectivo importante."
+      }
+    ],
+    "light": "Romanticismo, propuestas, invitaciones, sensibilidad, creatividad, intuición, diplomacia, expresión emocional, seguir el corazón y llegada de buenas noticias relacionadas con sentimientos o relaciones.",
+    "shadow": "Idealización excesiva, promesas poco realistas, inmadurez emocional, escapismo, vivir demasiado en la fantasía, dejarse llevar por las emociones sin analizar la realidad, expectativas sentimentales demasiado elevadas y encanto superficial.",
+    "reversed_meaning": "Cuando aparece invertido, el Caballero de Copas puede señalar decepciones sentimentales, promesas que no se cumplen, manipulación emocional o dificultad para distinguir entre fantasía y realidad. También puede representar a alguien que utiliza su encanto para conseguir lo que quiere sin mostrar sus verdaderas intenciones. Invita a revisar las expectativas y a no idealizar personas o situaciones.",
+    "combinations": [
+      {
+        "card": "Caballero de Copas + Los Amantes",
+        "meaning": "Una propuesta sentimental, declaración amorosa o decisión importante dentro de una relación."
+      },
+      {
+        "card": "Caballero de Copas + As de Copas",
+        "meaning": "Inicio emocional muy positivo, enamoramiento, nueva relación o propuesta que abre una etapa afectiva."
+      },
+      {
+        "card": "Caballero de Copas + Dos de Copas",
+        "meaning": "Acercamiento romántico, reconciliación, propuesta de pareja o conexión emocional correspondida."
+      },
+      {
+        "card": "Caballero de Copas + La Estrella",
+        "meaning": "Esperanza sentimental, inspiración, ilusión renovada y una oportunidad emocional prometedora."
+      },
+      {
+        "card": "Caballero de Copas + La Luna",
+        "meaning": "Idealización, sentimientos confusos o una situación romántica en la que todavía no se conoce toda la verdad."
+      },
+      {
+        "card": "Caballero de Copas + El Diablo",
+        "meaning": "Atracción intensa, seducción, dependencia emocional o una propuesta que puede esconder intereses poco claros."
+      },
+      {
+        "card": "Caballero de Copas + Tres de Espadas",
+        "meaning": "Decepción amorosa, propuesta rechazada o expectativas sentimentales que terminan causando dolor."
+      }
+    ],
+    "impulse": [
+      {
+        "title": "Escuchar",
+        "text": "Escucha lo que sientes y permite que tus emociones te orienten, pero no confundas intuición con fantasía."
+      },
+      {
+        "title": "Expresar",
+        "text": "Expresa lo que llevas dentro, acepta nuevas experiencias y propuestas."
+      },
+      {
+        "title": "Avanzar",
+        "text": "Avanza hacia aquello que verdaderamente conecta con tu corazón."
+      }
+    ],
+    "sort_order": 47
   },
   {
     "slug": "reina-de-copas",
