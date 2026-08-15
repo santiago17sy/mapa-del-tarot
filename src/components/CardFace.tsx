@@ -13,9 +13,10 @@ function useImageExists(src: string) {
     fetch(src, { method: "HEAD" })
       .then((res) => {
         if (cancelled) return;
-        const ok = res.ok && res.headers.get("content-type")?.startsWith("image/");
+        const ok = !!(res.ok && res.headers.get("content-type")?.startsWith("image/"));
         imageCache.set(src, ok);
         setExists(ok);
+
       })
       .catch(() => {
         if (cancelled) return;
