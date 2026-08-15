@@ -51,11 +51,12 @@ function ReadingPage() {
   const [openCard, setOpenCard] = useState<string | null>(null);
   const [done, setDone] = useState(false);
 
-  const chosen = [0, 1, 2].map((i) => ({
-    card: findCard(picked[i]),
-    orientation: orientations[i],
-    index: i,
+  const chosen = ([0, 1, 2] as const).map((i) => ({
+    card: findCard(picked[i] ?? ""),
+    orientation: (orientations[i] ?? "") as Orientation,
+    index: i as number,
   }));
+
   const selected = chosen.filter((entry) => Boolean(entry.card));
 
   const uniqueCount = new Set(picked.filter(Boolean)).size;
